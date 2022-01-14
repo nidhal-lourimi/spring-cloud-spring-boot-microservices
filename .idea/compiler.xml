@@ -6,17 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Account-Management-Microservice" />
         <module name="mobile-app-ws" />
         <module name="MobileAppDicoveryService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Account-Management-Microservice" target="17" />
+      <module name="AccountManagement" target="17" />
       <module name="mobile-app-ws" target="17" />
       <module name="MobileAppDicoveryService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Account-Management-Microservice" options="-parameters" />
+      <module name="AccountManagement" options="-parameters" />
       <module name="MobileAppDicoveryService" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
