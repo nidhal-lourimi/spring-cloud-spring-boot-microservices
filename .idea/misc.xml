@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/mobile-app-ws/pom.xml" />
         <option value="$PROJECT_DIR$/MobileAppDicoveryService/pom.xml" />
         <option value="$PROJECT_DIR$/Account-Management-Microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
       </list>
     </option>
   </component>

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Account-Management-Microservice/Account-Management-Microservice.iml" filepath="$PROJECT_DIR$/Account-Management-Microservice/Account-Management-Microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ApiGateway/ApiGateway.iml" filepath="$PROJECT_DIR$/ApiGateway/ApiGateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/MobileAppDicoveryService/MobileAppDicoveryService.iml" filepath="$PROJECT_DIR$/MobileAppDicoveryService/MobileAppDicoveryService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/mobile-app.iml" filepath="$PROJECT_DIR$/.idea/mobile-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mobile-app-ws/mobile-app-ws.iml" filepath="$PROJECT_DIR$/mobile-app-ws/mobile-app-ws.iml" />

@@ -6,14 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MobileAppDicoveryService" />
         <module name="Account-Management-Microservice" />
         <module name="mobile-app-ws" />
-        <module name="MobileAppDicoveryService" />
+        <module name="ApiGateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Account-Management-Microservice" target="17" />
       <module name="AccountManagement" target="17" />
+      <module name="ApiGateway" target="17" />
       <module name="mobile-app-ws" target="17" />
       <module name="MobileAppDicoveryService" target="17" />
     </bytecodeTargetLevel>
@@ -22,6 +24,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Account-Management-Microservice" options="-parameters" />
       <module name="AccountManagement" options="-parameters" />
+      <module name="ApiGateway" options="-parameters" />
       <module name="MobileAppDicoveryService" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
