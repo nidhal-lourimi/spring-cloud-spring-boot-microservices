@@ -1,7 +1,7 @@
 package com.nidhallourimi.app.ws.model.response;
 
 
-public class UserRest {
+public class UserResponseModel {
     private String firstName;
     private String LastName;
     private String UserId;

@@ -1,8 +1,9 @@
 package com.nidhallourimi.app.ws.userService;
 
-import com.nidhallourimi.app.ws.model.request.UserDetailsRequestModel;
-import com.nidhallourimi.app.ws.model.response.UserRest;
+import com.nidhallourimi.app.ws.shared.UserDto;
+
 
 public interface IUserService {
-  UserRest createUser(UserDetailsRequestModel userDetails);
+
+  UserDto createUser(UserDto userDetails);
 }

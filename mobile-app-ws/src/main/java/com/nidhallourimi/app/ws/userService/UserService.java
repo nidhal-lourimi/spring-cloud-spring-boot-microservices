@@ -1,29 +1,42 @@
 package com.nidhallourimi.app.ws.userService;
 
-import com.nidhallourimi.app.ws.model.request.UserDetailsRequestModel;
-import com.nidhallourimi.app.ws.model.response.UserRest;
-import com.nidhallourimi.app.ws.shared.Utils;
+import com.nidhallourimi.app.ws.data.UserEntity;
+import com.nidhallourimi.app.ws.repository.UsersRepo;
+
+import com.nidhallourimi.app.ws.shared.UserDto;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 @Service
 public class UserService implements IUserService {
-    Map<String, UserRest> users;
-    Utils utils;
 
-    public UserService() {
-    }
+
+
+    UsersRepo userRepository;
 
     @Autowired
-    public UserService(Utils utils) {
-        this.utils = utils;
+    public UserService(UsersRepo userRepository) {
+
+        this.userRepository=userRepository;
     }
 
     @Override
+    public UserDto createUser(UserDto userDetails) {
+      userDetails.setUserId(UUID.randomUUID().toString());
+      ModelMapper modelMapper=new ModelMapper();
+      modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+      UserEntity userEntity=modelMapper.map(userDetails, UserEntity.class);
+      userEntity.setEncryptedPassword("test");
+     userRepository.save(userEntity);
+      return userDetails;
+    }
+
+/*    @Override
     public UserRest createUser(UserDetailsRequestModel userDetails) {
         UserRest returnValue = new UserRest();
         returnValue.setEmail(userDetails.getEmail());
@@ -35,5 +48,5 @@ public class UserService implements IUserService {
         users.put(userId, returnValue);
 
         return returnValue;
-    }
+    }*/
 }
