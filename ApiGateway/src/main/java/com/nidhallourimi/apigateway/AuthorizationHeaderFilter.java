@@ -1,6 +1,7 @@
 package com.nidhallourimi.apigateway;
 
 import io.jsonwebtoken.Jwts;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 
@@ -20,47 +21,51 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     @Autowired
     Environment environment;
 
-    public AuthorizationHeaderFilter(){
+    public AuthorizationHeaderFilter() {
         super(Config.class);
     }
+
     @Override
     public GatewayFilter apply(Config config) {
-        return ( exchange, chain)-> {
+        return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
-            if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION/*="Authorization"*/)){
-                return onError(exchange,"No authorization header", HttpStatus.UNAUTHORIZED);
+            if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION/*="Authorization"*/)) {
+                return onError(exchange, "No authorization header", HttpStatus.UNAUTHORIZED);
 
             }
             String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
             String jwt = authorizationHeader.replace("Bearer", "");
-            if(!isJwtValid(jwt)){
-                return onError(exchange,"No authorization header", HttpStatus.UNAUTHORIZED);
+            if (!isJwtValid(jwt)) {
+                return onError(exchange, "No authorization header", HttpStatus.UNAUTHORIZED);
             }
             return chain.filter(exchange);
         };
     }
 
     private Mono<Void> onError(ServerWebExchange exchange, String err, HttpStatus httpStatus) {
-         ServerHttpResponse response = exchange.getResponse();
+        ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(httpStatus);
         return response.setComplete();
     }
 
-    public static class Config{
+    public static class Config {
 
     }
-    private boolean isJwtValid(String jwt){
-        boolean returnValue=true;
-        String subject =null;
-                try {
-                    subject = Jwts.parser().setSigningKey(environment.getProperty("token.secret")).parseClaimsJws(jwt).getBody()
-                            .getSubject();
-                }catch (Exception ex)
-                {returnValue=false;}
-            if (subject==null||subject.isEmpty())
-            {
-                returnValue=false;
-            }
+
+    private boolean isJwtValid(String jwt) {
+        boolean returnValue = true;
+        String subject = null;
+        try {
+            subject = Jwts.parser().setSigningKey(environment.getProperty("token.secret"))
+                    .parseClaimsJws(jwt)
+                    .getBody()
+                    .getSubject();
+        } catch (Exception ex) {
+            returnValue = false;
+        }
+        if (subject == null || subject.isEmpty()) {
+            returnValue = false;
+        }
         return returnValue;
     }
 }
