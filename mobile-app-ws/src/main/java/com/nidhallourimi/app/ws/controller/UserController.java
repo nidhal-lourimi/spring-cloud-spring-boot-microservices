@@ -9,6 +9,7 @@ import com.nidhallourimi.app.ws.userService.UserService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,11 +29,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
+    @Autowired
+    private Environment environment;
 
     @GetMapping(path = "/status")
     public String checkStatus() {
-        return "working ....";
+        return "working on port "+environment.getProperty("local.server.port")+", with token = "+environment.getProperty("token.secret");
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
