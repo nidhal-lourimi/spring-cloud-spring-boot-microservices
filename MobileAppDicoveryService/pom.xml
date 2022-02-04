@@ -29,16 +29,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.ge.research.semtk</groupId>
-            <artifactId>fdcCacheService</artifactId>
-            <version>2.2.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.doobo</groupId>
-            <artifactId>union-cache</artifactId>
-            <version>1.2.2</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
