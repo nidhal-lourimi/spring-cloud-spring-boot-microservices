@@ -484,3 +484,31 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 2022-02-07 15:12:21.273  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-02-07 15:17:21.276  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-02-07 15:22:21.284  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:27:21.288  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:32:21.301  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:37:21.306  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:42:21.322  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:47:21.337  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:52:21.340  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 15:57:21.344  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:02:21.358  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:07:21.368  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:12:21.374  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:17:21.377  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:22:21.422  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:27:21.434  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:29:20.479  INFO 11356 --- [http-nio-auto-1-exec-5] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:29:23.249  INFO 11356 --- [http-nio-auto-1-exec-6] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:29:24.086  INFO 11356 --- [http-nio-auto-1-exec-7] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:29:25.012  INFO 11356 --- [http-nio-auto-1-exec-8] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:29:39.645  INFO 11356 --- [http-nio-auto-1-exec-9] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:32:21.471  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:37:21.549  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:42:21.557  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:47:21.572  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:52:21.606  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 16:53:34.305  INFO 11356 --- [http-nio-auto-1-exec-1] c.a.p.a.a.i.c.AlbumsController           : Returning 2 albums
+2022-02-07 16:57:21.622  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 17:02:21.640  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 17:07:21.645  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-02-07 17:12:21.663  INFO 11356 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

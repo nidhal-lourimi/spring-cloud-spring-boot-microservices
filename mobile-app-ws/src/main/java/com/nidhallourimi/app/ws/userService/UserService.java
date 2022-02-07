@@ -1,5 +1,6 @@
 package com.nidhallourimi.app.ws.userService;
 
+import com.nidhallourimi.app.ws.data.AlbumsServiceClient;
 import com.nidhallourimi.app.ws.data.UserEntity;
 import com.nidhallourimi.app.ws.exceptions.UserServiceException;
 import com.nidhallourimi.app.ws.model.response.AlbumResponseModel;
@@ -31,14 +32,17 @@ public class UserService implements IUserService {
 
     BCryptPasswordEncoder bCryptPasswordEncoder;
     UsersRepo userRepository;
-    RestTemplate restTemplate;
+    /*RestTemplate restTemplate;*/
     Environment environment;
-
+    AlbumsServiceClient albumsServiceClient;
     @Autowired
-    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder, UsersRepo userRepository, RestTemplate restTemplate, Environment environment) {
+    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder,
+                       UsersRepo userRepository,
+                       AlbumsServiceClient albumsServiceClient,
+                       Environment environment) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userRepository = userRepository;
-        this.restTemplate = restTemplate;
+        this.albumsServiceClient=albumsServiceClient;
         this.environment = environment;
     }
 
@@ -77,13 +81,16 @@ public class UserService implements IUserService {
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw new UserServiceException("User not found");
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
-        String albumUrl = String.format(environment.getProperty("albums.url"), userId);
+        /** restTemplate**/
+      /*  String albumUrl = String.format(environment.getProperty("albums.url"), userId);
         ResponseEntity<List<AlbumResponseModel>> albumsListResponse = restTemplate.exchange(
                 albumUrl,
                 HttpMethod.GET,
                 null, new ParameterizedTypeReference<List<AlbumResponseModel>>() {
                 });
-        List<AlbumResponseModel> albumsList = albumsListResponse.getBody();
+        List<AlbumResponseModel> albumsList = albumsListResponse.getBody();*/
+        /** open feign **/
+        List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
         userDto.setAlbums(albumsList);
         return userDto;
     }
