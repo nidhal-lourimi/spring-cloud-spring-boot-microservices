@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping ( "users" )
 
 @Controller
 public class UserController {
@@ -32,67 +32,63 @@ public class UserController {
     @Autowired
     private Environment environment;
 
-    @GetMapping(path = "/status")
+    @GetMapping ( path = "/status" )
     public String checkStatus() {
-        return "working on port "+environment.getProperty("local.server.port")+", with token = "+environment.getProperty("token.secret");
+        return "working on port " + environment.getProperty("local.server.port") + ", with token = " + environment.getProperty("token.secret");
     }
 
-    @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
-                produces ={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} )
-    public ResponseEntity createUser(@Valid @RequestBody UserDetailsRequestModel userDetails){
-        ModelMapper modelMapper=new ModelMapper();
+    @PostMapping ( consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity createUser(@Valid @RequestBody UserDetailsRequestModel userDetails) {
+        ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        UserDto userDto=modelMapper.map(userDetails,UserDto.class);
-        UserDto createdUser= userService.createUser(userDto);
-        UserResponseModel userResponseModel=modelMapper.map(createdUser,UserResponseModel.class);
-        return new ResponseEntity(userResponseModel,HttpStatus.CREATED);
+        UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+        UserDto createdUser = userService.createUser(userDto);
+        UserResponseModel userResponseModel = modelMapper.map(createdUser, UserResponseModel.class);
+        return new ResponseEntity(userResponseModel, HttpStatus.CREATED);
     }
+
     @GetMapping
-    public String getUsers(@RequestParam(value = "page",defaultValue = "1") int page,
-                           @RequestParam(value = "limit",defaultValue = "30") int limit)
-    {
-    return "get user was called with page = "+page+" and limit = "+limit ;
+    public String getUsers(@RequestParam ( value = "page", defaultValue = "1" ) int page,
+                           @RequestParam ( value = "limit", defaultValue = "30" ) int limit) {
+        return "get user was called with page = " + page + " and limit = " + limit;
     }
 
-    @GetMapping(path ="/{userId}",produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity getUser(@PathVariable String userId) {
-        /*if(true)throw new UserServiceException("A user service exception is thrown");*/
+    @GetMapping ( path = "/{userId}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity<UserResponseModel> getUser(@PathVariable ( "userId" ) String userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+        UserResponseModel userResponseModel = new ModelMapper().map(userDto, UserResponseModel.class);
+        return new ResponseEntity(userResponseModel, HttpStatus.OK);
+    }
 
+
+    /*   @PostMapping(consumes ={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} ,
+                   produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
+       public ResponseEntity createUser(@Valid @RequestBody UserDetailsRequestModel userDetails){
+
+           UserRest returnValue= userService.createUser(userDetails);
+           return new ResponseEntity(returnValue,HttpStatus.OK);
+       }*/
+    @PutMapping ( path = "/{userId}", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE} )
+    public ResponseEntity updateUser(@PathVariable String userId, @Valid @RequestBody UpdateUserDetailsRequestModel userDetails) {
         if (users.containsKey(userId)) {
-            return new ResponseEntity(users.get(userId), HttpStatus.OK);
-        }else {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            UserResponseModel storedUser = users.get(userId);
+            storedUser.setFirstName(userDetails.getFirstName());
+            storedUser.setLastName(userDetails.getLastName());
+            users.put(userId, storedUser);
+            return new ResponseEntity(storedUser, HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-
-    }
- /*   @PostMapping(consumes ={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} ,
-                produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity createUser(@Valid @RequestBody UserDetailsRequestModel userDetails){
-
-        UserRest returnValue= userService.createUser(userDetails);
-        return new ResponseEntity(returnValue,HttpStatus.OK);
-    }*/
-    @PutMapping(path ="/{userId}" ,consumes ={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE} ,
-            produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity updateUser(@PathVariable String userId,@Valid @RequestBody UpdateUserDetailsRequestModel userDetails){
-       if(users.containsKey(userId) ){
-           UserResponseModel storedUser = users.get(userId);
-           storedUser.setFirstName(userDetails.getFirstName());
-           storedUser.setLastName(userDetails.getLastName());
-           users.put(userId,storedUser);
-           return new ResponseEntity(storedUser,HttpStatus.OK);
-
-       }else {
-           return new ResponseEntity(HttpStatus.NOT_FOUND);
-       }
     }
 
-    @DeleteMapping(path = "/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String userId){
+    @DeleteMapping ( path = "/{userId}" )
+    public ResponseEntity<Void> deleteUser(@PathVariable String userId) {
         users.remove(userId);
         return ResponseEntity.noContent().build();
     }
-
 
 
 }

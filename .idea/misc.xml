@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/Account-Management-Microservice/pom.xml" />
         <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/MobileAppConfigServer/pom.xml" />
+        <option value="$PROJECT_DIR$/PhotoAppApiAlbums/pom.xml" />
       </list>
     </option>
   </component>

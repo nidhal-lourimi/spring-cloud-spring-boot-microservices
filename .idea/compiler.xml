@@ -10,6 +10,7 @@
         <module name="Account-Management-Microservice" />
         <module name="mobile-app-ws" />
         <module name="ApiGateway" />
+        <module name="PhotoAppApiAlbums" />
         <module name="MobileAppConfigServer" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="mobile-app-ws" target="17" />
       <module name="MobileAppConfigServer" target="17" />
       <module name="MobileAppDicoveryService" target="17" />
+      <module name="PhotoAppApiAlbums" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +31,7 @@
       <module name="ApiGateway" options="-parameters" />
       <module name="MobileAppConfigServer" options="-parameters" />
       <module name="MobileAppDicoveryService" options="-parameters" />
+      <module name="PhotoAppApiAlbums" options="-parameters" />
       <module name="mobile-app-ws" options="-parameters" />
     </option>
   </component>

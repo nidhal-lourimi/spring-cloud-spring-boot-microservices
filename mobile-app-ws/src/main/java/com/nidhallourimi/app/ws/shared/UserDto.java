@@ -1,7 +1,10 @@
 package com.nidhallourimi.app.ws.shared;
 
+import com.nidhallourimi.app.ws.model.response.AlbumResponseModel;
+
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -18,7 +21,7 @@ public class UserDto implements Serializable {
     private String email;
     private String encryptedPassword;
     private String password;
-
+    private List<AlbumResponseModel> albums;
     public String getPassword() {
         return password;
     }
@@ -65,5 +68,13 @@ public class UserDto implements Serializable {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public List<AlbumResponseModel> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumResponseModel> albums) {
+        this.albums = albums;
     }
 }
