@@ -93,12 +93,7 @@ public class UserService implements IUserService {
                 });
         List<AlbumResponseModel> albumsList = albumsListResponse.getBody();*/
         /** open feign **/
-        List<AlbumResponseModel> albumsList = null;
-        try {
-            albumsList = albumsServiceClient.getAlbums(userId);
-        }catch (FeignException e){
-         logger.error(e.getLocalizedMessage());
-        }
+        List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
 
         userDto.setAlbums(albumsList);
         return userDto;
