@@ -8,8 +8,11 @@ import com.nidhallourimi.app.ws.repository.UsersRepo;
 
 import com.nidhallourimi.app.ws.shared.UserDto;
 
+import feign.FeignException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
@@ -29,7 +32,7 @@ import java.util.UUID;
 @Service
 public class UserService implements IUserService {
 
-
+    Logger logger= LoggerFactory.getLogger(this.getClass());
     BCryptPasswordEncoder bCryptPasswordEncoder;
     UsersRepo userRepository;
     /*RestTemplate restTemplate;*/
@@ -90,7 +93,13 @@ public class UserService implements IUserService {
                 });
         List<AlbumResponseModel> albumsList = albumsListResponse.getBody();*/
         /** open feign **/
-        List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
+        List<AlbumResponseModel> albumsList = null;
+        try {
+            albumsList = albumsServiceClient.getAlbums(userId);
+        }catch (FeignException e){
+         logger.error(e.getLocalizedMessage());
+        }
+
         userDto.setAlbums(albumsList);
         return userDto;
     }
