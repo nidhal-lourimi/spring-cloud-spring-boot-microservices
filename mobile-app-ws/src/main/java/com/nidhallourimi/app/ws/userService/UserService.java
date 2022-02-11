@@ -93,8 +93,9 @@ public class UserService implements IUserService {
                 });
         List<AlbumResponseModel> albumsList = albumsListResponse.getBody();*/
         /** open feign **/
+        logger.info("before calling albums microservices");
         List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
-
+        logger.info("after calling albums microservices");
         userDto.setAlbums(albumsList);
         return userDto;
     }

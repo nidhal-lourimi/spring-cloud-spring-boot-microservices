@@ -115,6 +115,20 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zipkin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <!-- Sleuth with Brave tracer implementation -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zipkin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <version>2.2.8.RELEASE</version>
+        </dependency>
+
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

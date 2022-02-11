@@ -10,13 +10,7 @@ public class UserResponseModel {
     private String email;
     private List<AlbumResponseModel> albums;
 
-    public List<AlbumResponseModel> getAlbums() {
-        return albums;
-    }
 
-    public void setAlbums(List<AlbumResponseModel> albums) {
-        this.albums = albums;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -48,5 +42,13 @@ public class UserResponseModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<AlbumResponseModel> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumResponseModel> albums) {
+        this.albums = albums;
     }
 }
